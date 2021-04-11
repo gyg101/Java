@@ -6,6 +6,7 @@ This is my Java Mysql learn notes
 	SQL: 
 summory: DBMS -> 执行 -> sql ->操作管理 -> DB
 二、Mysql常用命令：
+
 	功能		命令
 	登录数据库	mysql -u root -p YourPassword	若无密码输入 mysql -u root
 	退出数据库	exit;
@@ -16,8 +17,8 @@ summory: DBMS -> 执行 -> sql ->操作管理 -> DB
 	导入数据库	sourse dataBaseAbsolutePath+DBName.sql
 	
 Mysql中的具体操作命令：
-
 单行处理函数: 
+
 	lower 	select lower(dname) from dept;
 	upper	select upper(dname) from dept; 
 	substr	select substr(1,2) from dept;	//截取字符串
@@ -30,6 +31,7 @@ Mysql中的具体操作命令：
 	case ... when ... then ...else ... end ... //相当于if
 多行处理数据：
 分组函数：//自动忽略null
+
 	count
 	sum
 	max
@@ -37,6 +39,7 @@ Mysql中的具体操作命令：
 	avg
 
 日期函数: 
+
 	data_format
 	str_to_data	
 	formate 	//设置千分位
@@ -47,13 +50,13 @@ Mysql中的具体操作命令：
 		表包括行(row)和列(column)，行被称为数据(记录)；列被称为字段
 		每个字段都有字段名、数据类型、约束等属性。约束有很多，其中有一种叫唯一性约束。
 	2.SQL分类：
+
 		*DQL:
 		*DML:
 		DDL:
 		TCL: 
 		DCL: 
 	3.导入数据库	 sourse 数据库的绝对路径(不能有中文！)
-
 	4. 数据库中表连接查询的分类: 
 		连接查询按表连接的方式分类：
 		4.1 内连接
@@ -80,6 +83,7 @@ Mysql中的具体操作命令：
 		select ... from ... 
 
 数据库DQL语句大总结: 
+
 	select 
 		字段 
 	from 
@@ -99,6 +103,7 @@ Mysql中的具体操作命令：
 
 
 四、(DDL : create drop alter) 建表语句: 
+
 		1)创建: create tableName(字段1 数据类型, 字段2 数据类型, 字段3 数据类型); 
 		2)删除: drop table t_student;	或drop table if exist t_table;	前者若不存在则报错；后者不存在该表也不报错；
 	mysql中的数据类型: 
@@ -124,6 +129,7 @@ Mysql中的具体操作命令：
 五、DML修改表的记录(insert delete update)语句: 
 	  1)插入数据: insert into 表名(字段名1, 字段名2, 字段名3) value(值1, 值2, 值3);	eg:  insert into t_tableName(no) value(1);
 注: 字段名可以省略，此时相当于全写上字段名，需写上所有的值；
+
 		将字符串转换为日期格式: str_to_date(字符串1, 日期格式); 	str_to_date('10- 01-1999', '%m-%d-%Y'); 
 		mysql日期格式: %Y %m %d %h %i %s 年 月 日 时 分 秒
 		date_format(birth,'%Y/%m/%d') 	mysql默认采用date_format()将date转换为varchar类型('%Y-%m-%d')
@@ -180,11 +186,13 @@ DDL语句：修改表的结构: alter
 	注: mysql中默认的事务行为是啥呢？
 	自动提交事务，每执行一条mysql语句，则提交一次。如何关闭? start transaction 		
 	事务的特性: 
+	
 		A: 原子性: 事务是最小的工作单元，不可再分
 		C: 一致性: 在一个事务中，所有的操作必须是同时成功或同时失败
 		I: 隔离性：不同的两个事务1,2之间具有一定的隔离性
 		D: 持久性：事务最终结束的一个保障，事务提交，相当于将没有保存到硬盘中的数据保存到硬盘中。
 	事务之间的隔离级别: 
+	
 		读未提交: read uncommitted (最低的隔离级别) 脏读现象
 		读已提交: read committed 比较真实的数据，不可重复读取 		Oracle默认的隔离级别
 		可重复读: repeateable read 	可能会出现幻影读，不够真实		mysql中默认的隔离级别
@@ -212,6 +220,7 @@ DDL语句：修改表的结构: alter
 		面向视图的查询: 
 		面向视图的插入:
 		面向视图的删除: delete from dept2_view;
+		
 	CRUD: 程序员中的术语: 即增删改查: 
 	C: Create 
 	R: Retrive (查 , 检索)
@@ -225,6 +234,7 @@ DDL语句：修改表的结构: alter
 			导入: 使用前提: 
 		数据库设计三范式: 
 			def: 数据库表的设计依据
+			
 		第一范式: 要求任何一张表必须有主键，每一个字段原子性不可再分；
 		第二范式: 建立在第一范式的基础上，要求所有的非主键字段完全依赖主键，不能产生部分依赖；
 		第三范式: 建立在第二范式的基础上，要求所有的非主键字段直接依赖主键，不要产生传递依赖
@@ -239,6 +249,7 @@ DDL语句：修改表的结构: alter
 		2.实现类: 
 		3.面向接口写代码: 
 	JDBC连接六步: 
+	
 		1. 注册驱动	DriverManger.register("new com.mysql.jdbc.Driver()");
 			注册驱动的第二种方式: 	
 				Class.forName("com.mysql.jdbc.Driver");//执行静态代码块
