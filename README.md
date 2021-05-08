@@ -1,4 +1,4 @@
-# Java
+# Java-Mysql
 This is my Java Mysql learn notes
 一、数据库基本概念：
 
